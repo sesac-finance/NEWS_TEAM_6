@@ -52,13 +52,15 @@ class News_recommandCrawlerSpider(scrapy.Spider):
         page_urls = []
         headers= {
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'}
-        try:
-            for i in range(1,3):
-                for j in range(1,11):
-                    page_urls.append(response.xpath(f'//*[@id="main_content"]/div[2]/ul[{i}]/li[{j}]/dl/dt[1]/a/@href')[0].extract())
-        except Exception as e:
-            print(e)
-            pass
         
-        for url in page_urls:
-            yield scrapy.Request(url=url, callback=self.parse, headers=headers)
+        for i in range(1,3):
+            for j in range(1,11):
+                try:
+                    page_urls.append(response.xpath(f'//*[@id="main_content"]/div[2]/ul[{i}]/li[{j}]/dl/dt[1]/a/@href')[0].extract())
+                    print(response.xpath(f'//*[@id="main_content"]/div[2]/ul[{i}]/li[{j}]/dl/dt[1]/a/@href')[0].extract())
+                except Exception as e:
+                    print(e)
+                    pass
+        
+        # for url in page_urls:
+        #     yield scrapy.Request(url=url, callback=self.parse, headers=headers)
