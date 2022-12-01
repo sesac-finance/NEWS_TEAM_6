@@ -22,6 +22,7 @@ DOWNLOADER_MIDDLEWARES = {
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
 
+LOG_FILE = 'news.log'
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
 
