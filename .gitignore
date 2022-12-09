@@ -8,6 +8,8 @@
 .LSOverride
 *.csv*
 *.log*
+*.sql*
+*.pkl*
 
 # Icon must end with two \r
 Icon

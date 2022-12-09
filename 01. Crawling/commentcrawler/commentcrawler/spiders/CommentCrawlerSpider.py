@@ -25,8 +25,8 @@ class News_recommandCrawlerSpider(scrapy.Spider):
         sid2_list = [258]#,259,260,261,262,263,310,771]
 
         for sid2 in sid2_list:
-            for term in range(0, 1):
-                date = (datetime.date(2022, 11,29) + datetime.timedelta(+term)).strftime('%Y%m%d')
+            for term in range(0, 30):
+                date = (datetime.date(2022, 11,1) + datetime.timedelta(+term)).strftime('%Y%m%d')
                 try: 
                     url = f'https://news.naver.com/main/list.naver?mode=LS2D&mid=shm&sid2={sid2}&sid1=101&date={date}'
                     urls.append(url)
@@ -69,6 +69,7 @@ class News_recommandCrawlerSpider(scrapy.Spider):
 
         #referer 주소
         referer = response.xpath('/html/head/meta[6]/@content').get()
+        print(referer)
         #header 조건
         headers = {'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36','referer':referer}
 
